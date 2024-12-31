@@ -9,7 +9,7 @@ public class Main {
 
     Scanner scanner = new Scanner(System.in);
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-    LocalTime alarmTime;
+    LocalTime alarmTime = null;
 
     try{
       System.out.print("Enter an alarm time (hh:mm:ss): ");
