@@ -11,17 +11,21 @@ public class Main {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
     LocalTime alarmTime = null;
 
-    try{
-      System.out.print("Enter an alarm time (hh:mm:ss): ");
-      String inputTime = scanner.nextLine();
+    while (alarmTime == null){
+      try{
+        System.out.print("Enter an alarm time (hh:mm:ss): ");
+        String inputTime = scanner.nextLine();
+    
+        alarmTime = LocalTime.parse(inputTime, formatter);
+        System.out.println("Alarm set for "+ alarmTime);
+      }
+      catch(DateTimeParseException e){
+        System.out.println("Invalid format. Please use HH:MM:SS.");
+      }
   
-      alarmTime = LocalTime.parse(inputTime, formatter);
-      System.out.println("Alarm set for "+ alarmTime);
-    }
-    catch(DateTimeParseException e){
-      System.out.println("Invalid format. Please use HH:MM:SS.");
     }
 
+    
    
 
     scanner.close();
