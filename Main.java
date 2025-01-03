@@ -7,9 +7,12 @@ import java.util.Scanner;
 public class Main {
   public static void main(String[] args){
 
+    // Variables
     Scanner scanner = new Scanner(System.in);
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
     LocalTime alarmTime = null;
+    String filePath = "alarm_sound.wav";
+
 
     while (alarmTime == null){
       try{
@@ -17,7 +20,7 @@ public class Main {
         String inputTime = scanner.nextLine();
     
         alarmTime = LocalTime.parse(inputTime, formatter);
-        System.out.println("Alarm set for "+ alarmTime);
+        System.out.println("Alarm set 20:15for "+ alarmTime);
       }
       catch(DateTimeParseException e){
         System.out.println("Invalid format. Please use HH:MM:SS.");
@@ -25,7 +28,7 @@ public class Main {
   
     }
 
-    AlarmClock alarmClock = new AlarmClock(alarmTime);
+    AlarmClock alarmClock = new AlarmClock(alarmTime, filePath);
     Thread alarmThread = new Thread(alarmClock);
     alarmThread.start();
    
